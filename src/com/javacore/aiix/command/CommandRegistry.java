@@ -13,11 +13,14 @@ public enum CommandRegistry {
         commands = new HashMap<>();
 
         CommandAuthor commandAuthor = new CommandAuthor("author");
-
-        commands.put("version", new CommandVersion("version"));
         commands.put("author", commandAuthor);
         commands.put("creator", commandAuthor);
         commands.put("father", commandAuthor);
+
+        commands.put("version", new CommandVersion("version"));
+
+        commands.put("time", new CommandTime("time"));
+
     }
 
     public boolean hasCommands(String name) {

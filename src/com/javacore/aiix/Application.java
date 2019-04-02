@@ -25,7 +25,9 @@ public class Application {
             command = CommandRegistry.INSTANCE.getCommand(commandName);
             command.execute();
 
-            CommandRegistry.INSTANCE.listCommands();
+            commandName = "time";
+            command = CommandRegistry.INSTANCE.getCommand(commandName);
+            command.execute();
         }
 
 
