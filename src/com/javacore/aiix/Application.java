@@ -28,6 +28,11 @@ public class Application {
             commandName = "time";
             command = CommandRegistry.INSTANCE.getCommand(commandName);
             command.execute();
+
+            commandName = "weather";
+            command = CommandRegistry.INSTANCE.getCommand(commandName);
+            command.execute();
+
         }
 
 

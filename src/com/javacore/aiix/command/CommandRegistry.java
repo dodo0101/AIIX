@@ -21,6 +21,8 @@ public enum CommandRegistry {
 
         commands.put("time", new CommandTime("time"));
 
+        commands.put("weather", new CommandWeather("weather"));
+
     }
 
     public boolean hasCommands(String name) {
