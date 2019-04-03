@@ -2,6 +2,7 @@ package com.javacore.aiix;
 
 import com.javacore.aiix.command.ACommand;
 import com.javacore.aiix.command.CommandRegistry;
+import com.javacore.aiix.command.CommandVersion;
 
 
 public class Application {
@@ -14,6 +15,15 @@ public class Application {
     public static void main(String[] args) {
         System.out.println("Hello, my name is " + APP_NAME);
         System.out.println("my author`s name is " + AUTHOR);
+
+        ACommand acommand = new ACommand("Anonymous") { //inner anonymous class
+            @Override
+            public void execute() {
+                System.out.println("Hello!");
+                System.out.println(this.getClass());
+            }
+        };
+        acommand.execute();
 
         String commandName = "version";
 
@@ -32,6 +42,7 @@ public class Application {
             commandName = "weather";
             command = CommandRegistry.INSTANCE.getCommand(commandName);
             command.execute();
+
 
         }
 
