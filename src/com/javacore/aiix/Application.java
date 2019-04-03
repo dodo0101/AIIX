@@ -8,7 +8,7 @@ public class Application {
 
     static private final String APP_NAME = "AIIX";
     static public final String AUTHOR = "Fedor Glushchenko";
-    static public final String VERSION = "0.0.0";
+    static public final String VERSION = "0.0.2";
 
 
     public static void main(String[] args) {

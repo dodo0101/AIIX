@@ -3,6 +3,7 @@ package com.javacore.aiix.command;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
@@ -23,8 +24,8 @@ public class CommandWeather extends ACommand {
     }
 
     private static Map<String, Object> jsonToMap (String str) {
-        //map is redundant!!!
-        Map<String, Object> map = new Gson().fromJson (str, new TypeToken<HashMap<String, Object>>() {}.getType());
+        Type type = new TypeToken<HashMap<String, Object>>() {}.getType(); //creating new anonymous inner class and his instance - for defining of returned collection type
+        Map<String, Object> map = new Gson().fromJson (str, type);
         return map;
     }
 
@@ -45,11 +46,8 @@ public class CommandWeather extends ACommand {
             Map<String, Object> respMap = jsonToMap(result.toString());
             Map<String, Object> mainMap = jsonToMap(respMap.get("main").toString());
 
-
             //System.out.println(mainMap);
             System.out.println("Current temp is : " + mainMap.get("temp"));
-
-
 
         } catch (IOException e) {
             System.out.println(e.getMessage());
