@@ -2,13 +2,22 @@ package com.javacore.aiix.command;
 
 import static com.javacore.aiix.Application.VERSION;
 
-
+/**
+ * Version command class
+ * */
 public class CommandVersion extends  ACommand {
 
+    /**
+     *Setting command name
+     * @param name Name of the command
+     * */
      public CommandVersion(String name) {
-        super(name);
+         super(name);
     }
 
+    /**
+     * Method prints current version
+     * */
     @Override
     public void execute() {
         System.out.println("My version is : " + VERSION);

@@ -12,23 +12,41 @@ import java.util.Map;
 import com.google.gson.*;
 import com.google.gson.reflect.*;
 
+/**
+ * Weather command class
+ * */
 public class CommandWeather extends ACommand {
 
+    /**
+     * Fields with params for weather api
+     * */
     private static String API_KEY = "7acb3d1416e02469ab956e28188ae136";
     private static String LOCATION = "Saint Petersburg,ru";
     private static String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + LOCATION + "&appid=" + API_KEY +
             "&units=metric";
 
+    /**
+     *Setting command name
+     * @param name Name of the command
+     * */
     CommandWeather(String name) {
         super(name);
     }
 
+    /**
+     * Method creates new anonymous inner class and his instance - for defining of returned collection type
+     * @param str Combined url
+     * @return Map of objects with weather info
+     * */
     private static Map<String, Object> jsonToMap (String str) {
-        Type type = new TypeToken<HashMap<String, Object>>() {}.getType(); //creating new anonymous inner class and his instance - for defining of returned collection type
+        Type type = new TypeToken<HashMap<String, Object>>() {}.getType(); //
         Map<String, Object> map = new Gson().fromJson (str, type);
         return map;
     }
 
+    /**
+     * Method prints current temp
+     * */
     @Override
     public void execute() {
         try {

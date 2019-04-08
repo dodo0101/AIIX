@@ -2,16 +2,24 @@ package com.javacore.aiix;
 
 import com.javacore.aiix.command.ACommand;
 import com.javacore.aiix.command.CommandRegistry;
-import com.javacore.aiix.command.CommandVersion;
 
 
+/**
+ *Main class
+ * */
 public class Application {
 
+    /**
+     * Fields with name, author and version
+     * */
     static private final String APP_NAME = "AIIX";
     static public final String AUTHOR = "Fedor Glushchenko";
     static public final String VERSION = "0.0.2";
 
-
+    /**
+     * Start of the program
+     * @param args command line values
+     * */
     public static void main(String[] args) {
         System.out.println("Hello, my name is " + APP_NAME);
         System.out.println("my author`s name is " + AUTHOR);

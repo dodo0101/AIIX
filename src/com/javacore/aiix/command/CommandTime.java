@@ -5,12 +5,22 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Time command class
+ * */
 public class CommandTime extends ACommand{
 
+    /**
+     *Setting command name
+     * @param name Name of the command
+     * */
     CommandTime(String name) {
         super(name);
     }
 
+    /**
+     * Method prints current time in two formats
+     * */
     @Override
     public void execute() {
 

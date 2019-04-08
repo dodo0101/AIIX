@@ -4,7 +4,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * Enum implementing singleton pattern
+ * Creates the only example of interaction between console and programm
+ * */
 public enum CommandRegistry {
+
+
     INSTANCE;
 
     static Map<String, ACommand> commands;
@@ -18,14 +24,13 @@ public enum CommandRegistry {
         commands.put("father", commandAuthor);
 
         commands.put("version", new CommandVersion("version"));
-
         commands.put("time", new CommandTime("time"));
-
         commands.put("weather", new CommandWeather("weather"));
 
     }
 
     public boolean hasCommands(String name) {
+
         return commands.containsKey(name);
     }
 
