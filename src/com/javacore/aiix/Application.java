@@ -2,6 +2,9 @@ package com.javacore.aiix;
 
 import com.javacore.aiix.command.ACommand;
 import com.javacore.aiix.command.CommandRegistry;
+import com.javacore.aiix.profile.ProfileController;
+import com.javacore.aiix.profile.ProfileModel;
+import com.javacore.aiix.profile.ProfileView;
 import state.ApplicationState;
 import state.StateIdle;
 
@@ -33,9 +36,11 @@ public class Application {
      * @param args command line values
      * */
     public static void main(String[] args) {
-        System.out.println("Hello, my name is " + APP_NAME);
-        System.out.println("my author`s name is " + AUTHOR);
+        //System.out.println("Hello, my name is " + APP_NAME);
+        //System.out.println("my author`s name is " + AUTHOR);
 
+
+        /*
         ACommand acommand = new ACommand("Anonymous") { //inner anonymous class
             @Override
             public void execute() {
@@ -45,8 +50,13 @@ public class Application {
         };
         acommand.execute();
 
+         */
+
+
+
         String commandName = "version";
 
+        /*
         if (CommandRegistry.INSTANCE.hasCommands(commandName)) {
             ACommand command = CommandRegistry.INSTANCE.getCommand(commandName);
             command.execute();
@@ -68,6 +78,10 @@ public class Application {
         System.out.println();
         System.out.println();
 
+         */
+
+
+        /*
         changeState(new StateIdle(), "Idle");
         //reading input
         commandName = "test command";
@@ -76,6 +90,16 @@ public class Application {
             currentState.onCommand(commandName + i);
 
         }
+
+         */
+
+
+        ProfileController controller = new ProfileController();
+        controller.showProfile(5);
+
+
+
+
 
 
         //WTF
