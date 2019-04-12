@@ -2,6 +2,8 @@ package com.javacore.aiix;
 
 import com.javacore.aiix.command.ACommand;
 import com.javacore.aiix.command.CommandRegistry;
+import state.ApplicationState;
+import state.StateIdle;
 
 
 /**
@@ -15,6 +17,16 @@ public class Application {
     static private final String APP_NAME = "AIIX";
     static public final String AUTHOR = "Fedor Glushchenko";
     static public final String VERSION = "0.0.2";
+
+    static ApplicationState currentState; //currentState
+
+    public static void changeState(ApplicationState newState, String commandName) {
+        if (currentState != null) {
+            currentState.exit();
+        }
+        currentState = newState;
+        newState.enter(commandName);
+    }
 
     /**
      * Start of the program
@@ -53,8 +65,17 @@ public class Application {
 
 
         }
+        System.out.println();
+        System.out.println();
 
+        changeState(new StateIdle(), "Idle");
+        //reading input
+        commandName = "test command";
+        //receiving 10 new commands
+        for (int i = 0; i < 10; i++) {
+            currentState.onCommand(commandName + i);
 
+        }
 
 
         //WTF
@@ -66,4 +87,5 @@ public class Application {
         System.out.println(k);
         */
     }
+
 }
