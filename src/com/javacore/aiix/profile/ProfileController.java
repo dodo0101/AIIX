@@ -12,7 +12,7 @@ public class ProfileController {
     {
         store.INSTANCE.loadData();
         view = new ProfileView();
-        canvas = new ConsoleCanvas();
+        canvas = new ConsoleCanvas(15,15);
 
     }
 
