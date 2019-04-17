@@ -2,11 +2,19 @@ package com.javacore.aiix.profile;
 
 import com.javacore.aiix.common.BaseModel;
 
+import java.util.Date;
+
 public class ProfileModel extends BaseModel {
     private int id;
     private String firstName;
     private String lastName;
-    private boolean active;
+    private String nickName;
+    private int numberOfCrimes;
+    private Date dateOfBirth;
+    private boolean deceased;
+    private String placeOfBirth;
+    private Date dateOfDeath;
+    private String placeOfDeath;
 
     public static ProfileModel randomModel() {
         int rId = (int) (10*Math.random());
@@ -20,7 +28,7 @@ public class ProfileModel extends BaseModel {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.active = active;
+        this.deceased = active;
     }
 
     public int getId() {
@@ -48,11 +56,11 @@ public class ProfileModel extends BaseModel {
     }
 
     public boolean isActive() {
-        return active;
+        return deceased;
     }
 
     public void setActive(boolean active) {
-        this.active = active;
+        this.deceased = active;
     }
 
     public String getName() {

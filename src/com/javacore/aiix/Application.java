@@ -1,18 +1,11 @@
 package com.javacore.aiix;
 
-import com.javacore.aiix.command.ACommand;
-import com.javacore.aiix.command.CommandRegistry;
-import com.javacore.aiix.common.ConsoleCanvas;
+
+import com.javacore.aiix.db.DataBase;
 import com.javacore.aiix.db.Record;
 import com.javacore.aiix.db.Table;
-import com.javacore.aiix.profile.ProfileController;
-import com.javacore.aiix.profile.ProfileModel;
-import com.javacore.aiix.profile.ProfileView;
-import javafx.scene.control.Tab;
 import state.ApplicationState;
-import state.StateIdle;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -64,7 +57,7 @@ public class Application {
 
 
 
-        String commandName = "version";
+        //String commandName = "version";
 
         /*
         if (CommandRegistry.INSTANCE.hasCommands(commandName)) {
@@ -151,7 +144,7 @@ public class Application {
         concan.draw();
 
          */
-
+/*
         List<String> columns = new ArrayList<String>();
         columns.add("id");
         columns.add("firstName");
@@ -176,6 +169,64 @@ public class Application {
         for (String s : result) {
             System.out.println(s);
         }
+
+ */
+
+/*
+        DataBase db = new DataBase();
+
+        Thread thread = new Thread() {
+            @Override
+            public void run(){
+                try {
+                    Thread.sleep(1000);
+                    db.select();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                db.update();
+            }
+        };
+
+        thread.start();
+        (new Thread(runnable)).start();
+
+ */
+
+        List<String[]> records = DataBase.readDataFile(""); // READ FILE RECIEVED RECORD _ GET MODELS
+        Table table = new Table("Criminals", Arrays.asList(new String[]{"id", "name", "deceased"}));
+
+        for (String[] s : records) {
+            Record rec  = new Record(table);
+            rec.setValues(s);
+            table.insert(rec);
+        }
+/*
+        Record rec = new Record(table); //modified
+
+        rec.setValues(new String[]{"100", "Antony Soprano", "false"});
+
+        try {
+            //System.out.println(rec.getInt("id"));
+            System.out.println(rec.getBoolean("deceased"));
+
+        } catch (Record.FieldNotFoundExceptione e) {
+            e.printStackTrace();
+        } catch (NumberFormatException nfe) {
+            nfe.printStackTrace();
+        }
+
+ */
+        System.out.println("ALL is ok, all exceptions have been caught");
+
+        //DataBase.readDataFile("C:/Users/fglus/IdeaProjects/AIIX/src\com\javacore\aiix\example.txt");
 
 
         //WTF

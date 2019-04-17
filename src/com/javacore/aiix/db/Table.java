@@ -21,6 +21,10 @@ public class Table {
         this.columns = columns;
     }
 
+    public List<String> getColumns() {
+        return columns;                     //HOW TO MAKE IT SAFE?
+    }
+
     public void insert(Record record) {
         records.add(record);
     }
