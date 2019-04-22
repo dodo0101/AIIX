@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+//Have inside String array
+//now we want get value from record with current value
+//getInt is overloaded - if value didn`t find - you will have some value
+
 public class Record {
 
     List<String> values;
@@ -34,6 +39,18 @@ public class Record {
             }
 
         return Integer.parseInt(values.get(index));
+    }
+
+    public int getInt(String fieldName, int defaultValue) throws FieldNotFoundExceptione {
+        //Dangerous block of code
+        int index = columns.indexOf(fieldName);
+        if (index == -1) {
+            throw new FieldNotFoundExceptione("FIELD NOT FOUND: " + fieldName);
+        }
+
+        String valueString = values.get(index);
+        if (valueString == null) return defaultValue;
+        return Integer.parseInt(valueString);
     }
 
     public boolean getBoolean(String fieldName) throws FieldNotFoundExceptione {

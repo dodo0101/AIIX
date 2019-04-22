@@ -1,6 +1,7 @@
 package com.javacore.aiix.profile;
 
 import com.javacore.aiix.common.BaseModel;
+import com.javacore.aiix.db.Record;
 
 import java.util.Date;
 
@@ -31,12 +32,28 @@ public class ProfileModel extends BaseModel {
         this.deceased = active;
     }
 
+    public ProfileModel() {}
+
+    public static ProfileModel modelFromRecord(Record record) {
+        ProfileModel model = new ProfileModel();
+
+        try {
+            model
+                    .setId(record.getInt("id"))
+                    .setDeceased(record.getBoolean("deceased")); //WHYYYYYY
+        } catch (Exception e) {
+
+        }
+        return model;
+    }
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public ProfileModel setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getFirstName() {
@@ -65,5 +82,62 @@ public class ProfileModel extends BaseModel {
 
     public String getName() {
         return firstName + " " + lastName;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
+    public int getNumberOfCrimes() {
+        return numberOfCrimes;
+    }
+
+    public void setNumberOfCrimes(int numberOfCrimes) {
+        this.numberOfCrimes = numberOfCrimes;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public boolean isDeceased() {
+        return deceased;
+    }
+
+    public ProfileModel setDeceased(boolean deceased) {
+        this.deceased = deceased;
+        return this;
+    }
+
+    public String getPlaceOfBirth() {
+        return placeOfBirth;
+    }
+
+    public void setPlaceOfBirth(String placeOfBirth) {
+        this.placeOfBirth = placeOfBirth;
+    }
+
+    public Date getDateOfDeath() {
+        return dateOfDeath;
+    }
+
+    public void setDateOfDeath(Date dateOfDeath) {
+        this.dateOfDeath = dateOfDeath;
+    }
+
+    public String getPlaceOfDeath() {
+        return placeOfDeath;
+    }
+
+    public void setPlaceOfDeath(String placeOfDeath) {
+        this.placeOfDeath = placeOfDeath;
     }
 }

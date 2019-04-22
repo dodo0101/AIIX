@@ -1,13 +1,27 @@
 package com.javacore.aiix.db;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DataBase {
 
-    Map<String, Table> tables;
+    public static final String[] CRIMINALS_COLUMNS = new String[] {
+            "id", "fileName"//fields from model
+    };
+    public static final String[] CRIME_PAMILY_COLUMNS = new String[] {
+        "id", "name"
+    };
+    //how to initialize tables on start
+    //
+
+
+    static final Map<String, Table> tables;
+
+    static {
+        tables = new HashMap<>();
+        tables.put("Criminals", new Table("Criminals", Arrays.asList(CRIMINALS_COLUMNS)));
+        tables.put("CrimeFamily", new Table("CrimeFamily", Arrays.asList(CRIME_PAMILY_COLUMNS)));
+    }
 //SELECT WORKING HERE
 // Db.query("SELECT ID, NAME, EMAIL FROM CRIMINALS WHERE ID = 123");
 // 1. Keywords - select from
