@@ -14,7 +14,12 @@ public class DataBase {
     //how to initialize tables on start
     //
 
-
+    public static final String OPERATION_GROUP = "(SELECT|DELETE)";
+    public static final String FIELD_GROUP = "([*a-zA-Z, ]+)";
+    public static final String SPACE = "([\\s])";
+    public static final String FROM_GROUP = "(FROM)";
+    public static final String TABLE_GROUP = "([a-zA-Z]+)$";
+    
     static final Map<String, Table> tables;
 
     static {

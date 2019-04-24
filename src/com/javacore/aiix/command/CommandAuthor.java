@@ -17,7 +17,7 @@ public class CommandAuthor extends ACommand {
     }
 
     /**
-     * Method prints author
+     * Method prints author name
      * */
     @Override
     public void execute() {

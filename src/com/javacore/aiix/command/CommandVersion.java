@@ -8,7 +8,7 @@ import static com.javacore.aiix.Application.VERSION;
 public class CommandVersion extends  ACommand {
 
     /**
-     *Setting command name
+     * Setting command name
      * @param name Name of the command
      * */
      public CommandVersion(String name) {

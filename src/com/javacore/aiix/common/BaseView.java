@@ -1,5 +1,8 @@
 package com.javacore.aiix.common;
 
+/**
+ * BaseView - class describ
+ * */
 public abstract class BaseView {
     protected BaseModel model;
 

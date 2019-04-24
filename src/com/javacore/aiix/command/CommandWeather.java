@@ -20,9 +20,9 @@ public class CommandWeather extends ACommand {
     /**
      * Fields with params for weather api
      * */
-    private static String API_KEY = "7acb3d1416e02469ab956e28188ae136";
-    private static String LOCATION = "Saint Petersburg,ru";
-    private static String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + LOCATION + "&appid=" + API_KEY +
+    private final static String API_KEY = "7acb3d1416e02469ab956e28188ae136";
+    private final static String LOCATION = "Saint Petersburg,ru";
+    private final static String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + LOCATION + "&appid=" + API_KEY +
             "&units=metric";
 
     /**

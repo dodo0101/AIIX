@@ -11,7 +11,7 @@ import java.util.Date;
 public class CommandTime extends ACommand{
 
     /**
-     *Setting command name
+     * Setting command name
      * @param name Name of the command
      * */
     CommandTime(String name) {

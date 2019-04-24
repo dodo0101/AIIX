@@ -1,9 +1,10 @@
 package com.javacore.aiix.command;
 
 /**
- * Abstract class describes commands methods and fields
+ * Сlass ACommand describes commands, methods and fields for commands
  * */
 public abstract class ACommand {
+
     /**
      * Name and description of method
      * */
@@ -48,7 +49,7 @@ public abstract class ACommand {
     }
 
     /**
-     * Default execution method
+     * Default execution method - showing "not supported" if command not implemented
      * */
     public void execute() {
 

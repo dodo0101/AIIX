@@ -10,9 +10,14 @@ import java.util.Map;
  * */
 public enum CommandRegistry {
 
-
+    /**
+     * Only one example of this object will exist
+     * */
     INSTANCE;
 
+    /**
+     * HashMap of commands - created after first reference (in static block), and filled with name - command
+     * */
     static Map<String, ACommand> commands;
 
     static  {
@@ -29,15 +34,28 @@ public enum CommandRegistry {
 
     }
 
+    /**
+     * Checking if command exist
+     * @param name Name of command
+     * @return true - if command exist
+     * */
     public boolean hasCommands(String name) {
 
         return commands.containsKey(name);
     }
 
+    /**
+     * Method helps to get command
+     * @param name Name of command
+     * @return Link to command
+     * */
     public ACommand getCommand(String name) {
         return commands.get(name);
     }
 
+    /**
+     * Showing list of commands
+     * */
     public void listCommands() {
         Iterator it = commands.entrySet().iterator();
 
