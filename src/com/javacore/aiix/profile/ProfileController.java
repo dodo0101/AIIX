@@ -2,8 +2,14 @@ package com.javacore.aiix.profile;
 
 import com.javacore.aiix.common.ConsoleCanvas;
 
+/**
+ * Class for showing profile
+ * */
 public class ProfileController {
 
+    /**
+     * Fields helping to draw profile
+     * */
     private ProfileModel profileModel;
     private ProfileView view;
     private ProfileStore store;
@@ -12,11 +18,14 @@ public class ProfileController {
     {
         store.INSTANCE.loadData();
         view = new ProfileView();
-        canvas = new ConsoleCanvas(15,15);
+        canvas = new ConsoleCanvas(80,80);
 
     }
 
-
+    /**
+     * Showing profile
+     * @param id ID of criminal
+     * */
     public void showProfile(int id) {
         ProfileModel model = store.INSTANCE.getProfile(id);
         if (model == null) System.out.println("No record found with id: " + id);
@@ -27,7 +36,6 @@ public class ProfileController {
     }
 
 
-
     public ProfileView getView() {
         return view;
     }
@@ -35,7 +43,6 @@ public class ProfileController {
     public void setView(ProfileView view) {
         this.view = view;
     }
-
 
     public ProfileModel getProfileModel() {
         return profileModel;

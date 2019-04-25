@@ -18,7 +18,7 @@ public class Record {
         values = new ArrayList<String>();
     }
 
-    //25; Alexey; Rodin; javacore2019h1@gmail.com
+    //25; Alexey;Rodin;javacore2019h1@gmail.com
 
     public Record(Table table) {
         columns = table.getColumns();

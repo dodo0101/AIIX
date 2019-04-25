@@ -1,7 +1,7 @@
 package com.javacore.aiix;
 
 
-import state.ApplicationState;
+import com.javacore.aiix.state.ApplicationState;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -31,10 +31,18 @@ public class Application {
      * */
     static private final String APP_NAME = "AIIX";
     static public final String AUTHOR = "Fedor Glushchenko";
-    static public final String VERSION = "0.0.2";
+    static public final String VERSION = "0.0.5";
 
+    /**
+     * Field for state machine
+     * */
     static ApplicationState currentState; //currentState
 
+    /**
+     * Method for state machine - turning into new state
+     * @param newState New state of program
+     * @param commandName Name of command
+     * */
     public static void changeState(ApplicationState newState, String commandName) {
         if (currentState != null) {
             currentState.exit();

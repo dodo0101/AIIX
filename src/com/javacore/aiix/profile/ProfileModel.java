@@ -2,10 +2,16 @@ package com.javacore.aiix.profile;
 
 import com.javacore.aiix.common.BaseModel;
 import com.javacore.aiix.db.Record;
-
 import java.util.Date;
 
+/**
+ * Class keeping all parameters of Model
+ * */
 public class ProfileModel extends BaseModel {
+
+    /**
+     * Fields of model
+     * */
     private int id;
     private String firstName;
     private String lastName;
@@ -17,14 +23,13 @@ public class ProfileModel extends BaseModel {
     private Date dateOfDeath;
     private String placeOfDeath;
 
-    public static ProfileModel randomModel() {
-        int rId = (int) (10*Math.random());
-        boolean rActive = rId%2 == 0;
-        String rFirstName = "Steve_" + rId;
-        String rLastName = "Balmer_" + rId;
-        return new ProfileModel(rId, rFirstName, rLastName, rActive);
-    }
-
+    /**
+     * Constructor for ProfileModel
+     * @param id ID of criminal
+     * @param firstName First name
+     * @param lastName Last name
+     * @param active Is criminal active
+     * */
     public ProfileModel(int id, String firstName, String lastName, boolean active) {
         this.id = id;
         this.firstName = firstName;
@@ -32,15 +37,22 @@ public class ProfileModel extends BaseModel {
         this.deceased = active;
     }
 
+    /**
+     * Simple constructor
+     * */
     public ProfileModel() {}
 
+    /**
+     * Method creates model from record (table row)
+     * @param record Record (table row) object, created from DB table
+     * */
     public static ProfileModel modelFromRecord(Record record) {
         ProfileModel model = new ProfileModel();
 
         try {
             model
                     .setId(record.getInt("id"))
-                    .setDeceased(record.getBoolean("deceased")); //WHYYYYYY
+                    .setDeceased(record.getBoolean("deceased"));
         } catch (Exception e) {
 
         }
@@ -51,6 +63,10 @@ public class ProfileModel extends BaseModel {
         return id;
     }
 
+    /**
+     * Setter with returning object - helps to interact with object method
+     * @param id ID from record
+     * */
     public ProfileModel setId(int id) {
         this.id = id;
         return this;
@@ -140,4 +156,21 @@ public class ProfileModel extends BaseModel {
     public void setPlaceOfDeath(String placeOfDeath) {
         this.placeOfDeath = placeOfDeath;
     }
+
+
+    /*
+     Deprecated methods from practice
+
+     // Returning random model
+         public static ProfileModel randomModel() {
+        int rId = (int) (10*Math.random());
+        boolean rActive = rId%2 == 0;
+        String rFirstName = "Steve_" + rId;
+        String rLastName = "Balmer_" + rId;
+        return new ProfileModel(rId, rFirstName, rLastName, rActive);
+    }
+
+     */
+
+
 }

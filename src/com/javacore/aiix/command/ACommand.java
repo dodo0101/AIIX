@@ -6,7 +6,7 @@ package com.javacore.aiix.command;
 public abstract class ACommand {
 
     /**
-     * Name and description of method
+     * Name and description of command
      * */
     private String name;
     protected String description;
