@@ -23,7 +23,7 @@ public enum ProfileStore {
     }
 
     /**
-     * Loading profiles from db
+     * Loading profiles from dbservice
      * */
     public void loadData() {
         profiles.clear();

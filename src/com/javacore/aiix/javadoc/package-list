@@ -1,6 +1,6 @@
 com.javacore.aiix
 com.javacore.aiix.command
 com.javacore.aiix.common
-com.javacore.aiix.db
+com.javacore.aiix.dbservice
 com.javacore.aiix.profile
 com.javacore.aiix.state

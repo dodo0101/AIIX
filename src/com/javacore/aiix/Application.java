@@ -1,11 +1,11 @@
 package com.javacore.aiix;
 
 
-import com.javacore.aiix.db.misc.DBConstants;
-import com.javacore.aiix.db.misc.Utils;
-import com.javacore.aiix.db.misc.XMLDocumentHandler;
-import com.javacore.aiix.profile.ProfileController;
+import com.javacore.aiix.dbservice.misc.DBConstants;
+import com.javacore.aiix.dbservice.misc.Utils;
+import com.javacore.aiix.dbservice.misc.XMLDocumentHandler;
 import com.javacore.aiix.state.ApplicationState;
+import com.javacore.aiix.webservice.WebClientApplication;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -48,6 +48,13 @@ public class Application {
      * @param args command line values
      * */
     public static void main(String[] args) {
+
+        try{
+            WebClientApplication.INSTANCE.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         //String commandName = "version";
 
@@ -100,14 +107,14 @@ public class Application {
 
 
 /*
-        DataBase db = new DataBase();
+        DataBase dbservice = new DataBase();
 
         Thread thread = new Thread() {
             @Override
             public void run(){
                 try {
                     Thread.sleep(1000);
-                    db.select();
+                    dbservice.select();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -118,7 +125,7 @@ public class Application {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                db.update();
+                dbservice.update();
             }
         };
 
