@@ -1,4 +1,4 @@
-package com.javacore.aiix.db;
+package com.javacore.aiix.db.old;
 
 import java.util.ArrayList;
 import java.util.Arrays;

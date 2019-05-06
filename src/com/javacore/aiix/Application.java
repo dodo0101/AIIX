@@ -1,30 +1,22 @@
 package com.javacore.aiix;
 
 
+import com.javacore.aiix.db.misc.DBConstants;
+import com.javacore.aiix.db.misc.Utils;
+import com.javacore.aiix.db.misc.XMLDocumentHandler;
+import com.javacore.aiix.profile.ProfileController;
 import com.javacore.aiix.state.ApplicationState;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 
 /**
  *Main class
  * */
 public class Application {
-
-    public static final String OPERATION_GROUP = "(SELECT|DELETE)";
-    public static final String FIELD_GROUP = "([*a-zA-Z, ]+)";
-    public static final String SPACE = "([\\s])";
-    public static final String FROM_GROUP = "(FROM)";
-    public static final String TABLE_GROUP = "([a-zA-Z]+)$";
-
-
-    //регулярное выражения для поиска доменных имен с производльным окончанием
-    public static final String ALLOWED_DOMAIN_NAMES = "^((a-zA-Z0-9)+\\.)+[a-zA-Z]+$";
-    //регулярное выражения для поиска доменных имен с окончанием com и de
-    public static final String ALLOWED_DOMAIN_NAME = "^((a-zA-Z0-9)+\\.)+[com|de|ru]+$";
-
 
     /**
      * Fields with name, author and version
@@ -57,58 +49,6 @@ public class Application {
      * */
     public static void main(String[] args) {
 
-        String query = "SELECT id, fileName, lastName FROM Criminals";
-
-        Pattern p = Pattern.compile(OPERATION_GROUP + SPACE + FIELD_GROUP + SPACE + FROM_GROUP + SPACE + TABLE_GROUP);
-        Matcher matcher = p.matcher(query); //
-
-        if (matcher.find()) {
-            System.out.println("Number of groups: " + matcher.groupCount());
-            for (int i = 0, len = matcher.groupCount(); i <= len; i++) {
-                System.out.println("Group " + i + ": " + matcher.group(i));
-            }
-        }
-
-
-        /*
-        List<String> list = new ArrayList<String>();
-        list.add("developer.apple.com");
-        list.add("google/com");
-        list.add("wrong.");
-        list.add(".another");
-        list.add("this is a wrong domain name");
-        list.add("facebook.com");
-        list.add("nasa.gov");
-        list.add("handelsblatt.de");
-        list.add("login.");
-        list.add("mail.ru");
-        iteratorCleanup(list, ALLOWED_DOMAIN_NAMES);
-        printList(list);
-
-         */
-
-
-
-
-
-        //System.out.println("Hello, my name is " + APP_NAME);
-        //System.out.println("my author`s name is " + AUTHOR);
-
-
-        /*
-        ACommand acommand = new ACommand("Anonymous") { //inner anonymous class
-            @Override
-            public void execute() {
-                System.out.println("Hello!");
-                System.out.println(this.getClass());
-            }
-        };
-        acommand.execute();
-
-         */
-
-
-
         //String commandName = "version";
 
         /*
@@ -127,11 +67,7 @@ public class Application {
             commandName = "weather";
             command = CommandRegistry.INSTANCE.getCommand(commandName);
             command.execute();
-
-
         }
-        System.out.println();
-        System.out.println();
 
          */
 
@@ -151,78 +87,17 @@ public class Application {
         /*
         ProfileController controller = new ProfileController();
         controller.showProfile(5);
+        */
 
-         */
-        /*
-
-        Runnable runnable1 = new Runnable() {
-            @Override
-            public void run() {
-
-                for (int i = 0; i < 100; i++) {
-                    System.out.print("-");
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-
-        Thread thread11 = new Thread() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 20; i++) {
-                    System.out.print(".");
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                System.out.print("done");
-
-            }
-        };
-
-        System.out.print("\nLoading");
-        thread11.start();
-
-         */
         /*
         ConsoleCanvas concan = new ConsoleCanvas(20,20);
         concan.drawSquare(4,4,10, 'x');
         concan.draw();
 
          */
-/*
-        List<String> columns = new ArrayList<String>();
-        columns.add("id");
-        columns.add("firstName");
-        columns.add("lastName");
-        Table criminalTable = new Table("Criminals", columns);
 
-        List<String> values = new ArrayList<String>();
-        List<String> values2 = new ArrayList<String>();
 
-        values.add("1");
-        values.add("Vladimir");
-        values.add("Trump");
 
-        values2.add("2");
-        values2.add("Donald");
-        values2.add("Timoshenko");
-
-        criminalTable.insert(new Record(values));
-        criminalTable.insert(new Record(values2));
-
-        List<String> result = criminalTable.selectField("lastName");
-        for (String s : result) {
-            System.out.println(s);
-        }
-
- */
 
 /*
         DataBase db = new DataBase();
@@ -262,15 +137,12 @@ public class Application {
         }
 
          */
+
 /*
         Record rec = new Record(table); //modified
-
         rec.setValues(new String[]{"100", "Antony Soprano", "false"});
-
         try {
-            //System.out.println(rec.getInt("id"));
             System.out.println(rec.getBoolean("deceased"));
-
         } catch (Record.FieldNotFoundExceptione e) {
             e.printStackTrace();
         } catch (NumberFormatException nfe) {
@@ -306,6 +178,28 @@ public class Application {
     public static void printList(List<String> list) {
         for (String s : list) {
             System.out.println(s);
+        }
+    }
+
+    public static void testXMLReader() {
+        try {
+            Utils.readXMLDocument(DBConstants.STRUCTURE_DIR + "/test.xml",
+                    new XMLDocumentHandler() {
+                        @Override
+                        public void handleDocument(Document document) {
+                            Element root = document.getDocumentElement();
+                            System.out.println(root.getAttribute("name"));
+                            NodeList columns = root.getElementsByTagName("column");
+                            System.out.println(columns.getLength());
+                            for (int i = 0, len = columns.getLength(); i < len; i++) {
+                                Element column = (Element)columns.item(i);
+                                System.out.println(column.getAttribute("systemName"));
+                                System.out.println(column.getAttribute("displayName"));
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -1,7 +1,7 @@
 package com.javacore.aiix.profile;
 
 import com.javacore.aiix.common.BaseModel;
-import com.javacore.aiix.db.Record;
+import com.javacore.aiix.db.old.Record;
 import java.util.Date;
 
 /**
