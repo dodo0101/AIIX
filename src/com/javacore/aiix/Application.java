@@ -1,6 +1,6 @@
 package com.javacore.aiix;
 
-
+import com.javacore.aiix.appserver.SteveApplication;
 import com.javacore.aiix.dbservice.misc.DBConstants;
 import com.javacore.aiix.dbservice.misc.Utils;
 import com.javacore.aiix.dbservice.misc.XMLDocumentHandler;
@@ -44,6 +44,7 @@ public class Application {
     }
 
     /**
+     *
      * Start of the program
      * @param args command line values
      * */
@@ -51,6 +52,7 @@ public class Application {
 
         try{
             WebClientApplication.INSTANCE.start();
+            SteveApplication.INSTANCE.start();
         } catch (Exception e) {
             e.printStackTrace();
         }

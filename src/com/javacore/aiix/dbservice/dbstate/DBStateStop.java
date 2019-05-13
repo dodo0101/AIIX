@@ -20,7 +20,7 @@ public class DBStateStop extends DBState {
         list.add(mde.encrypt("test string one"));
         list.add(mde.encrypt("test string two"));
 
-
+        ;
         Utils.writeListToFile(list, DBConstants.DATA_DIR + "/test.dat", mde);
     }
 

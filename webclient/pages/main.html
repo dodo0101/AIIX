@@ -1,9 +1,16 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <script type="application/javascript" src="/static/js/main.js"> </script>
 </head>
 <body>
     <div class="">Criminal Profile for {{firstName}}</div>
     <div> Number of crimes: {{lastName}}</div>
+    <div> Current Time is: {{time}} </div>
+
+    <input id="text_input" type="text">
+    <input type="button" onclick="oneTestButtonClick()" value="Test Get Button!">
+    <div id="server_response_section"></div>
+
 </body>
 </html>

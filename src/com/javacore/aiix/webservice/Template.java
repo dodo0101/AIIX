@@ -13,11 +13,14 @@ public class Template {
 
 
     public String comile() {
-        String templateText = Utils.readFile(templateFileName); //TODO
+        /*String templateText = Utils.readFile(templateFileName); //TODO
         for (String key : values.keySet()) {
             templateText = templateText.replace("{{" + key + "}}", values.get(key));
         }
         return templateText;
+
+         */
+        return null;
     }
 
     //map.put("firstName", "Vasia");
