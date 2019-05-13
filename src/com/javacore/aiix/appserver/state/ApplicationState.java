@@ -1,4 +1,4 @@
-package com.javacore.aiix.state;
+package com.javacore.aiix.appserver.state;
 
 /**
  * Class for keeping methods of state machine, have states busy/free

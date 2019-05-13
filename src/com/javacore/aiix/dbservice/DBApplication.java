@@ -12,6 +12,9 @@ import java.util.regex.Pattern;
 public enum DBApplication {
     INSTANCE;
 
+    public static final int PORT = 6701;
+    public static final String APP_NAME = "DBService";
+    
     public static final String DATA_ENCRYPTION_LEVEL = "LOW";
 
     public static final String OPERATION_GROUP = "(SELECT|DELETE)";
@@ -21,11 +24,11 @@ public enum DBApplication {
     public static final String TABLE_GROUP = "([a-zA-Z]+)$";
 
     private DBState currentState;
-    public DBState stateInit = new DBStateInit();
-    public DBState stateRun = new DBStateRunning();
-    public DBState stateStop = new DBStateStop();
+    public DBState stateInit = new DBStateInit("Initializing");
+    public DBState stateRun = new DBStateRunning("Running");
+    public DBState stateStop = new DBStateStop("Shutting Down");
 
-    public void start() {
+    public void start()  {
         changeState(stateInit);
     }
 
@@ -46,6 +49,10 @@ public enum DBApplication {
             }
         }
         return null;
+    }
+
+    public String getStateName() {
+        return currentState.getName();
     }
 
     public void changeState(DBState state) {

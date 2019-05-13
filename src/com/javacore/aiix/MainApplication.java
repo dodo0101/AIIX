@@ -4,7 +4,7 @@ import com.javacore.aiix.appserver.SteveApplication;
 import com.javacore.aiix.dbservice.misc.DBConstants;
 import com.javacore.aiix.dbservice.misc.Utils;
 import com.javacore.aiix.dbservice.misc.XMLDocumentHandler;
-import com.javacore.aiix.state.ApplicationState;
+import com.javacore.aiix.appserver.state.*;
 import com.javacore.aiix.webservice.WebClientApplication;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,14 +16,14 @@ import java.util.List;
 /**
  *Main class
  * */
-public class Application {
+public class MainApplication {
 
     /**
      * Fields with name, author and version
      * */
     static private final String APP_NAME = "AIIX";
     static public final String AUTHOR = "Fedor Glushchenko";
-    static public final String VERSION = "0.0.5";
+    static public final String VERSION = "0.0.6";
 
     /**
      * Field for state machine

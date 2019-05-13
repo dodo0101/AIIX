@@ -1,4 +1,4 @@
-package com.javacore.aiix.common;
+package com.javacore.aiix.appserver.common;
 /**
  * ConsoleCanvas - drawing in console
  * */

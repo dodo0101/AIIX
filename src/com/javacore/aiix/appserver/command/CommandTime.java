@@ -1,4 +1,4 @@
-package com.javacore.aiix.command;
+package com.javacore.aiix.appserver.command;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

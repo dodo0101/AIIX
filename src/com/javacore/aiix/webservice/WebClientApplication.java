@@ -9,7 +9,7 @@ public enum WebClientApplication {
     INSTANCE;
 
     public static final int PORT = 6703;
-    public static final String APP_NAME = "Web Client Service - WHATTT";
+    public static final String APP_NAME = "Web Client Service";
 
     public void start() throws IOException {
         HttpServer server = HttpServer.create(new InetSocketAddress(PORT),10);

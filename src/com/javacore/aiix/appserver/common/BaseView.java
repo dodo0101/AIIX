@@ -1,4 +1,4 @@
-package com.javacore.aiix.common;
+package com.javacore.aiix.appserver.common;
 
 /**
  * BaseView - class describing view classes behaviour

@@ -1,4 +1,4 @@
-package com.javacore.aiix.profile;
+package com.javacore.aiix.appserver.profile;
 
 import java.util.HashMap;
 import java.util.Map;

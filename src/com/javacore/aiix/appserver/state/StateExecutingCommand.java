@@ -1,6 +1,6 @@
-package com.javacore.aiix.state;
+package com.javacore.aiix.appserver.state;
 
-import com.javacore.aiix.Application;
+import com.javacore.aiix.MainApplication;
 
 /**
  * Class using if state is busy
@@ -25,7 +25,7 @@ public class StateExecutingCommand extends ApplicationState {
      * */
     private void executeCommand(String commandName) {
         //code for execution
-        Application.changeState(new StateIdle(), "Idle");
+        MainApplication.changeState(new StateIdle(), "Idle");
     }
 
     /**

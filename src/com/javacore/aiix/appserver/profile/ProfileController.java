@@ -1,6 +1,6 @@
-package com.javacore.aiix.profile;
+package com.javacore.aiix.appserver.profile;
 
-import com.javacore.aiix.common.ConsoleCanvas;
+import com.javacore.aiix.appserver.common.ConsoleCanvas;
 
 /**
  * Class for showing profile

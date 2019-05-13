@@ -1,6 +1,6 @@
-package com.javacore.aiix.command;
+package com.javacore.aiix.appserver.command;
 
-import static com.javacore.aiix.Application.VERSION;
+import static com.javacore.aiix.MainApplication.VERSION;
 
 /**
  * Version command class

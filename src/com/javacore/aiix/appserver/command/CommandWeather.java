@@ -1,4 +1,4 @@
-package com.javacore.aiix.command;
+package com.javacore.aiix.appserver.command;
 
 import java.io.BufferedReader;
 import java.io.IOException;

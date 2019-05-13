@@ -2,6 +2,20 @@ package com.javacore.aiix.dbservice.dbstate;
 
 public abstract class DBState {
 
+    protected String name;
+
+    public DBState(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void enter() {
         System.out.println("Basic entering state");
     }

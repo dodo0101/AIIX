@@ -1,6 +1,6 @@
-package com.javacore.aiix.state;
+package com.javacore.aiix.appserver.state;
 
-import com.javacore.aiix.Application;
+import com.javacore.aiix.MainApplication;
 
 /**
  * Class in case state is free
@@ -13,7 +13,7 @@ public  class StateIdle extends  ApplicationState {
      * */
     @Override
     public void enter(String commandName) {
-        System.out.println("Entering idle com.javacore.aiix.state");
+        System.out.println("Entering idle com.javacore.aiix.appserver.state");
     }
 
     /**
@@ -23,7 +23,7 @@ public  class StateIdle extends  ApplicationState {
     @Override
     public void onCommand(String commandName) {
         System.out.println("New command received, starting execution..." + commandName);
-        Application.changeState(new StateExecutingCommand(), commandName);
+        MainApplication.changeState(new StateExecutingCommand(), commandName);
     }
 
     /**
@@ -31,6 +31,6 @@ public  class StateIdle extends  ApplicationState {
      * */
     @Override
     public void exit() {
-        System.out.println("Exiting idle com.javacore.aiix.state");
+        System.out.println("Exiting idle com.javacore.aiix.appserver.state");
     }
 }

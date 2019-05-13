@@ -4,6 +4,10 @@ import com.javacore.aiix.dbservice.DBApplication;
 
 public class DBStateRunning extends DBState {
 
+    public DBStateRunning(String name) {
+        super(name);
+    }
+
     @Override
     public void enter() {
         System.out.println("Entering DBRunning state");

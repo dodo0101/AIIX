@@ -1,8 +1,8 @@
-package com.javacore.aiix.profile;
+package com.javacore.aiix.appserver.profile;
 
-import com.javacore.aiix.common.BaseView;
-import com.javacore.aiix.common.Canvas;
-import com.javacore.aiix.common.ConsoleCanvas;
+import com.javacore.aiix.appserver.common.BaseView;
+import com.javacore.aiix.appserver.common.Canvas;
+import com.javacore.aiix.appserver.common.ConsoleCanvas;
 
 /**
  * Class for creating photo view

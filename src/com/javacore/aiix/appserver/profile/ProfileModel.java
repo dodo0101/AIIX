@@ -1,6 +1,6 @@
-package com.javacore.aiix.profile;
+package com.javacore.aiix.appserver.profile;
 
-import com.javacore.aiix.common.BaseModel;
+import com.javacore.aiix.appserver.common.BaseModel;
 import com.javacore.aiix.dbservice.old.Record;
 import java.util.Date;
 

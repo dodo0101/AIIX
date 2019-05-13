@@ -1,4 +1,4 @@
-package com.javacore.aiix.command;
+package com.javacore.aiix.appserver.command;
 
 /**
  * Сlass ACommand describes commands, methods and fields for commands

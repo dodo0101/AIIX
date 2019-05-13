@@ -1,7 +1,7 @@
-package com.javacore.aiix.command;
+package com.javacore.aiix.appserver.command;
 
 
-import static com.javacore.aiix.Application.AUTHOR;
+import static com.javacore.aiix.MainApplication.AUTHOR;
 
 /**
  * Author command class
