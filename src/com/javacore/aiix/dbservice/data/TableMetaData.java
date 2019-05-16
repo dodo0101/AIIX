@@ -94,5 +94,14 @@ public class TableMetaData {
                 ", tableName='" + tableName + '\'' +
                 '}';
     }
+
+    public int getColumnIndex(String columnName) {
+        for (TableColumn c : columns) {
+            if (c.getName().equals(columnName)) {
+                return columns.indexOf(c);
+            }
+        }
+        return -1;
+    }
 }
 

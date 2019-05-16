@@ -1,6 +1,6 @@
 package com.javacore.aiix.appserver;
 
-import com.javacore.aiix.webservice.*;
+
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;

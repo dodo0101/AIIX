@@ -19,7 +19,7 @@ public enum WebClientApplication {
         server.createContext("/static/js", new JSHandler());
         server.createContext("/api/testget", new ApiGetTestHandler());
         server.createContext("/api/testpost", new ApiPostHandler());
-
+        server.createContext("/api/criminals", new ApiCriminalsHandler());
 
         server.start();
         String message = String.format("%s is running on port: %s", APP_NAME, server.getAddress().getPort());

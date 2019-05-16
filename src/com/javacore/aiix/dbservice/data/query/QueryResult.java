@@ -1,4 +1,4 @@
-package com.javacore.aiix.dbservice.data;
+package com.javacore.aiix.dbservice.data.query;
 
 public class QueryResult {
     Status status;
@@ -43,4 +43,3 @@ public class QueryResult {
         this.load = load;
     }
 }
-

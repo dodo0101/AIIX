@@ -1,5 +1,7 @@
 package com.javacore.aiix.dbservice.server;
 
+import com.javacore.aiix.dbservice.DBApplication;
+import com.javacore.aiix.dbservice.data.query.QueryResult;
 import com.javacore.aiix.dbservice.misc.DataHandler;
 import com.javacore.aiix.dbservice.misc.Utils;
 import com.sun.net.httpserver.HttpExchange;
@@ -8,30 +10,47 @@ import com.sun.net.httpserver.HttpHandler;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
-import java.util.Map;
+
 
 public class QueryHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange request) throws IOException {
-
-        String response = "\nNEW REQUEST RECEIVED!";
-        response += String.format("METHOD: %s", request.getRequestMethod());
-        for (Map.Entry<String, List<String>> header : request.getRequestHeaders().entrySet()) {
-            response += String.format("\n %s %s", header.getKey(), header.getValue());
-        }
         InputStream is = request.getRequestBody();
+        final DBQueryRequest dbQueryRequest = new DBQueryRequest();
         Utils.readStream(is, new DataHandler() {
             @Override
             public void handleString(String line) {
-                String query = String.format("REQUEST BODY: %s", line);
-                System.out.println(query);
+                System.out.println(String.format("DB SAYS, REQUEST BODY: %s", line));
+                dbQueryRequest.setQueryString(line);
             }
         });
-        response += response + "\nI will be able to execute any query soon";
+
+
+        QueryResult result = DBApplication.INSTANCE.query(dbQueryRequest.getQueryString()); //в зависимости от текущего состоояния - разное поведение
+
+        String response = "";
+        if (result.getStatus().equals(QueryResult.Status.OK)) {
+            response = (String) (result.getLoad());
+        } else {
+            response = result.getStatus() + "\n" + result.getMessage();
+        }
         request.sendResponseHeaders(200, response.length());
         OutputStream os = request.getResponseBody();
         os.write(response.getBytes());
         os.close();
+    }
+
+    public static class DBQueryRequest {
+        private String queryString;
+
+        public String getQueryString() {
+            return queryString;
+        }
+
+        public void setQueryString(String queryString) {
+            this.queryString = queryString;
+        }
+
+
     }
 }

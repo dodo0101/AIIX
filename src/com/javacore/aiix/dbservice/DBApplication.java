@@ -1,28 +1,24 @@
 package com.javacore.aiix.dbservice;
 
-import com.javacore.aiix.dbservice.data.QueryResult;
+import com.javacore.aiix.dbservice.data.query.QueryResult;
+import com.javacore.aiix.dbservice.data.Table;
 import com.javacore.aiix.dbservice.dbstate.DBState;
 import com.javacore.aiix.dbservice.dbstate.DBStateInit;
 import com.javacore.aiix.dbservice.dbstate.DBStateRunning;
 import com.javacore.aiix.dbservice.dbstate.DBStateStop;
+import com.javacore.aiix.dbservice.misc.DBQueryRegEx;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum DBApplication {
     INSTANCE;
 
-    public static final int PORT = 6701;
-    public static final String APP_NAME = "DBService";
-    
+    private Map<String, Table> tables = new HashMap<>();
+
     public static final String DATA_ENCRYPTION_LEVEL = "LOW";
-
-    public static final String OPERATION_GROUP = "(SELECT|DELETE)";
-    public static final String FIELD_GROUP = "([*a-zA-Z, ]+)";
-    public static final String SPACE = "([\\s])";
-    public static final String FROM_GROUP = "(FROM)";
-    public static final String TABLE_GROUP = "([a-zA-Z]+)$";
-
     private DBState currentState;
     public DBState stateInit = new DBStateInit("Initializing");
     public DBState stateRun = new DBStateRunning("Running");
@@ -38,8 +34,9 @@ public enum DBApplication {
 
     public QueryResult query(String query) {
 
+
         //String query = "SELECT id, fileName, lastName FROM Criminals";
-        Pattern p = Pattern.compile(OPERATION_GROUP + SPACE + FIELD_GROUP + SPACE + FROM_GROUP + SPACE + TABLE_GROUP);
+        Pattern p = Pattern.compile(DBQueryRegEx.OPERATION_GROUP + DBQueryRegEx.SPACE + DBQueryRegEx.FIELD_GROUP + DBQueryRegEx.SPACE + DBQueryRegEx.FROM_GROUP + DBQueryRegEx.SPACE + DBQueryRegEx.TABLE_GROUP);
         Matcher matcher = p.matcher(query); //
 
         if (matcher.find()) {
@@ -49,6 +46,7 @@ public enum DBApplication {
             }
         }
         return null;
+        //return currentState.onQuery(query);
     }
 
     public String getStateName() {
@@ -65,6 +63,14 @@ public enum DBApplication {
         }
         currentState = state;
         currentState.enter();
+    }
+
+    public void addTable(String tableName, Table table) {
+        tables.put(tableName, table);
+    }
+
+    public Table getTable(String tableName) {
+        return tables.get(tableName);
     }
 
 }

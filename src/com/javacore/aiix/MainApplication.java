@@ -1,6 +1,7 @@
 package com.javacore.aiix;
 
 import com.javacore.aiix.appserver.SteveApplication;
+import com.javacore.aiix.dbservice.DBApplication;
 import com.javacore.aiix.dbservice.misc.DBConstants;
 import com.javacore.aiix.dbservice.misc.Utils;
 import com.javacore.aiix.dbservice.misc.XMLDocumentHandler;
@@ -52,7 +53,8 @@ public class MainApplication {
 
         try{
             WebClientApplication.INSTANCE.start();
-            SteveApplication.INSTANCE.start();
+            //SteveApplication.INSTANCE.start();
+            //DBApplication.INSTANCE.start();
         } catch (Exception e) {
             e.printStackTrace();
         }

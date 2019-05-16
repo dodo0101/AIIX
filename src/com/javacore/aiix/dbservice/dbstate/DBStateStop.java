@@ -18,7 +18,7 @@ public class DBStateStop extends DBState {
         System.out.println("Entering DBStop state");
 
         List<String> list = new ArrayList<>();
-        MainDataEncryptor mde = new MainDataEncryptor();
+        MainDataEncryptor mde = new MainDataEncryptor(); //TODO - encrypring
 
         list.add(mde.encrypt("test string one"));
         list.add(mde.encrypt("test string two"));
