@@ -1,5 +1,6 @@
 package com.javacore.aiix.dbservice.misc;
 
+import com.javacore.aiix.dbservice.DBApplication;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -98,6 +99,18 @@ public class Utils {
         try {
             fos = new FileOutputStream(filePath);
             bw = new BufferedWriter(new OutputStreamWriter(fos));
+            if (DBApplication.INSTANCE.DATA_ENCRYPTION_LEVEL.equals("HIGH")) {
+                String[] sArr = filePath.split("/");
+                int length = sArr.length;
+                sArr[length - 1] = "encryptionKEY";
+                StringBuilder pathBuild = new StringBuilder();
+                for (int i = 0; i < length; i++) {
+                    if (i != length - 1) pathBuild.append(sArr[i] + "/");
+                    else pathBuild.append(sArr[i]);
+                }
+                String keyPath = pathBuild.toString();
+            }
+            //here
             for (String line: list) {
                 bw.newLine();
                 bw.write(encryptor.encrypt(line));

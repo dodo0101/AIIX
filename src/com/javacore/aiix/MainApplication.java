@@ -49,15 +49,26 @@ public class MainApplication {
      * Start of the program
      * @param args command line values
      * */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
 
-        try{
-            WebClientApplication.INSTANCE.start();
+
+        DBApplication.INSTANCE.start();
+
+
+        /*try{
+            //WebClientApplication.INSTANCE.start();
             //SteveApplication.INSTANCE.start();
-            //DBApplication.INSTANCE.start();
+            DBApplication.INSTANCE.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+         */
+
+
+
+
+
 
 
         //String commandName = "version";

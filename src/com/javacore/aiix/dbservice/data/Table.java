@@ -7,13 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Table class has rows
+ * Table is a DB unit
  * */
 public class Table {
 
     private List<TableRow> rows;
     private TableMetaData metaData;
 
+    /**
+     * Table constructor
+     * @param metaData -
+     * */
     public Table(TableMetaData metaData) {
         this.metaData = metaData;
         rows = new ArrayList<>();

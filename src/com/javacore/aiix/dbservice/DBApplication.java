@@ -7,7 +7,9 @@ import com.javacore.aiix.dbservice.dbstate.DBStateInit;
 import com.javacore.aiix.dbservice.dbstate.DBStateRunning;
 import com.javacore.aiix.dbservice.dbstate.DBStateStop;
 import com.javacore.aiix.dbservice.misc.DBQueryRegEx;
+import com.javacore.aiix.dbservice.test.*;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -24,8 +26,15 @@ public enum DBApplication {
     public DBState stateRun = new DBStateRunning("Running");
     public DBState stateStop = new DBStateStop("Shutting Down");
 
-    public void start()  {
-        changeState(stateInit);
+    public void start() throws ClassNotFoundException {
+        boolean testsEnabled = Boolean.getBoolean(System.getProperty("et"));
+        //System.out.println(testsEnabled); //WHY NOT TRUE
+        //if (testsEnabled)
+         runTests("com.javacore.aiix.dbservice.test.WHERETest");
+
+
+
+            //changeState(stateInit); //CLOSED WHILE TEST CHECK
     }
 
     public void stop() {
@@ -71,6 +80,28 @@ public enum DBApplication {
 
     public Table getTable(String tableName) {
         return tables.get(tableName);
+    }
+
+    private void runTests(String className) throws ClassNotFoundException {
+        int passed = 0;
+        int failed = 0;
+
+        for (Method m : Class.forName(className).getMethods()) {
+            Test testAnnotation = m.getAnnotation(Test.class);
+            if (testAnnotation != null && testAnnotation.enabled()) {
+                try {
+                    m.invoke(null); //старт метода
+                    passed++;
+                } catch (Throwable ex) {
+                    System.out.printf("Test is failed: %s \n", m, ex.getMessage());
+                    failed++;
+                }
+            }
+
+        }
+
+        System.out.println("Passed: " + passed + " Failed: " + failed);
+
     }
 
 }
